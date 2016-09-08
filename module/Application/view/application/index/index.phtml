@@ -1,5 +1,39 @@
-<a href="/create">Adicionar cerveja</a>
-<br>
-<?php foreach ($beers as $beer): ?>
-    <?php echo $beer->name;?> <br>
-<?php endforeach;?>
+ <div class="actions clearfix"> 
+    <div class="btns">
+        <a class="btn btn-primary" href="/beer/save" title="Adicionar cerveja">
+            Adicionar cerveja 
+        </a>
+    </div>
+</div>
+<h3>Lista de Cervejas</h3>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Estilo</th>
+            <th width="120" class="center">Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($beers as $beer): ?>
+            <tr>
+                <td>
+                    <?php echo $beer->name;?>    
+                </td>
+                <td>
+                    <?php echo $beer->style;?>    
+                </td>
+                <td class="center">
+                    <a href="/beer/save/<?php echo $beer->id;?>" title="Editar">
+                       Editar
+                    </a>
+                    <a href="/beer/delete/<?php echo $beer->id;?>" rel="confirmation" title="Excluir">
+                       Excluir
+                    </a>                
+                </td>
+            </tr>
+        <?php endforeach;?>
+    </tbody>
+</table>
+
+
