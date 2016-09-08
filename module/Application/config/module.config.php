@@ -20,25 +20,19 @@ return array(
                     ),
                 ),
             ),
-            'create' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'beer' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route'    => '/create',
+                    'route' => '/beer[/][:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
-                        'action'     => 'create',
+                        'action'     => 'index',
                     ),
-                ),
-            ),
-            'insert' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/insert',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'insert',
-                    ),
-                ),
+                ),                
             ),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
