@@ -48,28 +48,12 @@ class IndexController extends AbstractActionController
             /* faz a validação do formulário*/
             if ($form->isValid()) {
                 /* pega os dados validados e filtrados */
-                $data = $form->getData();     
+                $data = $form->getData(); 
                 /* preenche os dados do objeto Beer com os dados do formulário*/
                 $beer->exchangeArray($data);
                 /* salva o novo beer */
                 $tableGateway->save($beer);
                 /* redireciona para a página inicial que mostra todos os beers */
-                return $this->redirect()->toUrl('/');
-            }
-        }
-
-
-        if ($request->isPost()) {
-            $form->setInputFilter($beer->getInputFilter());
-            $form->setData($request->getPost());
-            if ($form->isValid()) {
-                /* pega os dados validados e filtrados */
-                $data = $form->getData();
-                /* preenche os dados do objeto Post com os dados do formulário*/
-                $beer->exchangeArray($data);
-                /* salva o novo post*/
-                $tableGateway->save($beer);
-                /* redireciona para a página inicial que mostra todos os posts*/
                 return $this->redirect()->toUrl('/');
             }
         }
